@@ -9,6 +9,7 @@ import javax.persistence.Table;
 //ctrl+schift+o les imports
 @Entity 
 @Table(name="T_articles")
+
 public class Article {
 
     @Id @GeneratedValue( strategy=GenerationType.IDENTITY )
