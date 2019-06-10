@@ -11,25 +11,27 @@ import fr.koor.webstore.business.Article;
 
 public class ConsoleJPA {
 
-    public static void main(String[] args) throws Exception {
-        EntityManagerFactory entityManagerFactory = null;
-        EntityManager entityManager = null;
-        EntityTransaction txn = null;
+	public static void main(String[] args) throws Exception {
+		EntityManagerFactory entityManagerFactory = null;
+		EntityManager entityManager = null;
+		EntityTransaction txn = null;
 
-        try {
-        	
-            entityManagerFactory = Persistence.createEntityManagerFactory("persist");
-            entityManager = entityManagerFactory.createEntityManager();
-            txn = entityManager.getTransaction();
+		try {
+
+			entityManagerFactory = Persistence.createEntityManagerFactory("persist");
+			entityManager = entityManagerFactory.createEntityManager();
+			txn = entityManager.getTransaction();
 			txn.begin();
-			entityManager.createNativeQuery( "CREATE TABLE IF NOT EXISTS T_articles (FOO_ID int)" ).executeUpdate();
+			// vous pouvez eviter ce bout de code avec la modif du fichiers persistence.xml
+			entityManager.createNativeQuery("CREATE TABLE IF NOT EXISTS T_articles (FOO_ID int)").executeUpdate();
 			txn.commit();
-			//entitymanageer.persist ???
+			// entitymanageer.persist ???
 			System.out.println("rana mla7 al hamdoulillah");
-        } 
-            finally {
-            if ( entityManager != null ) entityManager.close();
-            if ( entityManagerFactory != null ) entityManagerFactory.close();
-        }
-    }
+		} finally {
+			if (entityManager != null)
+				entityManager.close();
+			if (entityManagerFactory != null)
+				entityManagerFactory.close();
+		}
+	}
 }
